@@ -123,6 +123,7 @@ class HTTPClient:
         )
 
         if response.ok:
+            print('requesting')
             return response
         else:
             print('APIError raised!: ', response)
@@ -584,6 +585,8 @@ class BackOffHTTPClient(HTTPClient):
 
             self._NR_BACKOFF += 1
             wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
+
+            print('here i am')
 
             # check if error should retry
             if _should_retry(code, error, wait) is True:
