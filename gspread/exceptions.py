@@ -47,9 +47,6 @@ class APIError(GSpreadException):
             # in case we failed to parse the error from the API
             # build an empty error object to notify the caller
             # and keep the exception raise flow running
-
-            print('JSONDecodeError triggered')
-
             error = {
                 "code": -1,
                 "message": response.text,
