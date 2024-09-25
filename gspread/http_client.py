@@ -125,6 +125,7 @@ class HTTPClient:
         if response.ok:
             return response
         else:
+            print('APIError raised!: ', response)
             raise APIError(response)
 
     def batch_update(self, id: str, body: Optional[Mapping[str, Any]]) -> Any:
@@ -585,6 +586,7 @@ class BackOffHTTPClient(HTTPClient):
 
             # check if error should retry
             if _should_retry(code, error, wait) is True:
+                print('RETRYING REQUEST')
                 time.sleep(wait)
 
                 # make the request again
