@@ -576,6 +576,7 @@ class BackOffHTTPClient(HTTPClient):
             ) and wait <= self._MAX_BACKOFF
 
         try:
+            print('test')
             return super().request(*args, **kwargs)
         except APIError as err:
             code = err.code
