@@ -584,6 +584,8 @@ class BackOffHTTPClient(HTTPClient):
             self._NR_BACKOFF += 1
             wait = min(2**self._NR_BACKOFF, self._MAX_BACKOFF)
 
+            print(f'Error, code: {code}, error: {error}, wait: {wait}')
+
             # check if error should retry
             if _should_retry(code, error, wait) is True:
                 print('Retrying request!')

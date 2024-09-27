@@ -48,7 +48,7 @@ class APIError(GSpreadException):
             # build an empty error object to notify the caller
             # and keep the exception raise flow running
             error = {
-                "code": -1,
+                "code": response.status_code,
                 "message": response.text,
                 "status": "invalid JSON",
             }
